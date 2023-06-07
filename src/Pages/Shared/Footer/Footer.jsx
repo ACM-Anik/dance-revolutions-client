@@ -1,15 +1,11 @@
-
+import logo from '../../../assets/logo-2.png'
 
 const Footer = () => {
     return (
         <div className="">
             <footer className="footer p-10 px-28 bg-black text-white border-b-2 border-base">
-                <div className="flex flex-col justify-center">
-                    <span className="footer-title">Services</span>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                <div className="">
+                    <img src={logo} alt="" />
                 </div>
                 <div className="flex-col justify-center">
                     <span className="footer-title">Company</span>
