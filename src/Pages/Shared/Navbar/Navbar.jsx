@@ -1,17 +1,20 @@
 import { Link, NavLink } from "react-router-dom";
-import { Tooltip } from 'react-tooltip';
 import logo from '../../../assets/logo.png';
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 
 const Navbar = () => {
-  
+    const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
-       
 
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
     }
-    const user = {}
+
 
     const navRoutes = <>
         <li className="font-bold"><NavLink to="/">Home</NavLink></li>
@@ -23,7 +26,7 @@ const Navbar = () => {
 
     const navIcons = <>
         <button className="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#2088d8]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
         </button>
         <button className="btn btn-ghost btn-circle px-4">
             <div className="indicator">
@@ -34,7 +37,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="shadow-lg shadow-black">
+        <div className="shadow-black">
             <div className="navbar bg-[#f4f3f0f1] h-20">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -61,37 +64,30 @@ const Navbar = () => {
                     {
                         user ?
                             <div className="dropdown dropdown-end">
-                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar border border-black">
+                                <label tabIndex={0} className="btn btn-circle avatar border border-[#2088d8]">
                                     {
                                         user &&
-                                        <div className="w-10 rounded-full">
-                                            <a
-                                                data-tooltip-id="my-tooltip"
-                                                data-tooltip-content={user?.displayName}
-                                                data-tooltip-place="left"
-                                                className="avatar">
-                                                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                                    {
-                                                        user?.photoURL ?
-                                                            <img src={user?.photoURL} alt='profile' />
-                                                            :
-                                                            <button className="btn btn-circle rounded-full  text-xs">Profile</button>
-                                                    }
-                                                </div>
-                                            </a>
-                                            <Tooltip id="my-tooltip" />
+                                        <div className="w-10 rounded-full ring ring-[#2088d8] ring-offset-base-100 ring-offset-2">
+                                            {
+                                                user?.photoURL ?
+                                                    <img src={user?.photoURL} alt='profile' />
+                                                    :
+                                                    <button className="btn btn-circle rounded-full  text-xs">Profile</button>
+                                            }
                                         </div>
                                     }
                                 </label>
-                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li>
-                                        <a className="justify-between hover:bg-black hover:text-white hover:border-black">
-                                            Profile
-                                            <span className="badge border-black">New</span>
-                                        </a>
-                                    </li>
-                                    <li><button onClick={handleLogOut} className="btn-sm ps-4 font-semibold text-center btn-outline text-black border-black hover:bg-black hover:border-black">Logout</button></li>
-                                </ul>
+                                <div className="">
+                                    <ul tabIndex={0} className="z-50 menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                                        <li>
+                                            <a className="justify-between hover:bg-black hover:text-white hover:border-black font-semibold">
+                                                Profile
+                                                <span className="badge border-black">New</span>
+                                            </a>
+                                        </li>
+                                        <li><button onClick={handleLogOut} className="btn-sm ps-4 font-semibold text-center btn-outline text-black border-black hover:bg-black hover:border-black">Logout</button></li>
+                                    </ul>
+                                </div>
                             </div>
                             :
                             <button className="btn btn-outline text-black rounded-lg border-black hover:border-[#1a1919] hover:bg-[#1a1919]"><Link to="/login">Login</Link></button>

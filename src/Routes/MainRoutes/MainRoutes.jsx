@@ -4,6 +4,8 @@ import MainLayout from "../../Layout/MainLayout/MainLayout";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import Classes from "../../Pages/Classes/Classes";
 import Instructors from "../../Pages/Instructors/Instructors";
+import Login from "../../Pages/LoginPage/Login/Login";
+import Register from "../../Pages/LoginPage/Register/Register";
 
 const router = createBrowserRouter([
     {
@@ -27,10 +29,18 @@ const router = createBrowserRouter([
             path: 'dashboard',
             element: <ErrorPage></ErrorPage>
         },
+        {
+            path: '/login',
+            element: <Login></Login>
+        },
+        {
+            path: '/register',
+            element: <Register></Register>
+        }
       ]
     },
     {
-        
+
     }
 ]);
 
