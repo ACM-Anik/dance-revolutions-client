@@ -1,0 +1,37 @@
+[
+    {
+      "name": "Ballet",
+      "description": "Ballet is a classical dance form characterized by grace, precision, and fluid movements.",
+      "image": "https://i.ibb.co/TqncB3G/Ballet.jpg"
+    },
+    {
+      "name": "Hip Hop",
+      "description": "Hip Hop is a high-energy dance style that originated in urban communities, known for its street-inspired moves and improvisation.",
+      "image": "https://i.ibb.co/5hbjKBx/Hip-hop.jpg"
+    },
+    {
+        "name": "Break Dance",
+        "description": "Break Dance, also known as B-boying or breaking, is an acrobatic and athletic dance style that emerged from hip-hop culture, featuring impressive moves such as spins, flips, and freezes.",
+        "image": "https://i.ibb.co/dmpVmKL/Break-dance.jpg"
+    },
+    {
+      "name": "Classic",
+      "description": "Classic dance refers to traditional and formal dance styles rooted in cultural heritage and classical techniques.",
+      "image": "https://i.ibb.co/TcpXczQ/Classic.jpg"
+    },
+    {
+      "name": "BharatNatyam",
+      "description": "BharatNatyam is a classical Indian dance form characterized by intricate footwork, expressive gestures, and storytelling.",
+      "image": "https://i.ibb.co/PcDTcNh/Bharatnatyam.jpg"
+    },
+    {
+      "name": "Salsa",
+      "description": "Salsa is a lively and passionate dance style originating from Latin America, known for its energetic movements and rhythmic patterns.",
+      "image": "https://i.ibb.co/x5Rngrc/Salsa.jpg"
+    },
+    {
+        "name": "Jazz",
+        "description": "Jazz dance combines elements of ballet, modern dance, and African-American rhythms to create a dynamic and expressive style.",
+        "image": "https://i.ibb.co/L0gW937/Jazz.jpg"
+      }
+  ]

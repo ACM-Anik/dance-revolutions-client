@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+.active{
+  color: rgb(32, 136, 216);
+  background: none;
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
