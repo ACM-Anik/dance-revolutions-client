@@ -1,9 +1,126 @@
+import { Helmet } from "react-helmet-async";
+import { useQuery } from "react-query";
+import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
+// import { useState } from "react";
 
 
 const ManageUsers = () => {
+    const { data: users = [], refetch } = useQuery(['users'], async () => {
+        const res = await fetch('http://localhost:5000/users')
+        return res.json();
+    })
+
+    // const [disabled, setDisabled] = useState(false);
+
+    const handleMakeInstructor = (user) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Want to make the user instructor?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Make Instructor!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+                    method: 'PATCH'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.modifiedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Done!',
+                                'Making Instructor Successful.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+
+    }
+
+    const handleMakeAdmin = (user) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Want to make the user admin?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Make Admin!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                    method: 'PATCH'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.modifiedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Done!',
+                                'Making Admin Successful.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+
+    }
+
+    const handleDelete = (user) => {
+        console.log(user);
+        
+    }
+
     return (
         <div>
-            <h3>Manage users</h3>
+            <Helmet>
+                <title>Manage User | Dance Revolutions</title>
+            </Helmet>
+            <div className="mt-6 mb-10">
+                <h1 className="text-3xl font-bold border-l-4 border-[#2088d8] p-2">Manage Users</h1>
+            </div>
+            <div className="overflow-x-auto">
+                <table className="table table-zebra w-full">
+                    <thead className="bg-black text-white rounded">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Instructor</th>
+                            <th>Admin</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            users.map((user, index) => <tr key={user._id}>
+                                <th>{index + 1}</th>
+                                <td className="text-base font-semibold">{user.name}</td>
+                                <td className="text-base font-semibold">{user.email}</td>
+                                <td className="text-base font-semibold">
+                                    {user.role === 'Instructor' ? <span className="text-base font-semibold text-center">Instructor</span> : <button onClick={() => handleMakeInstructor(user)} className="btn bg-black  text-white">Make Instructor</button>}
+                                </td>
+                                <td>
+                                    {user.role === 'Admin' ? <span className="text-base font-semibold text-center">Admin</span> : <button onClick={() => handleMakeAdmin(user)} className="btn bg-black  text-white">Make Admin</button>}
+                                </td>
+                                <td>
+                                    <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
+                                </td>
+                            </tr>)
+                        }
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

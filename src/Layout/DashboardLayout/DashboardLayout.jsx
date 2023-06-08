@@ -3,14 +3,14 @@ import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUsers, FaCalendarWee
 
 const DashboardLayout = () => {
 
-    const isAdmin = null;
+    const isAdmin = true;
 
     return (
         <div>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col items-center justify-center">
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <div className="drawer-content flex flex-col items-center p-4">
+                    <label htmlFor="my-drawer-2 " className="btn border-2 border-[#2088d8] drawer-button lg:hidden">Options</label>
                     <Outlet></Outlet>
 
                 </div>

@@ -15,7 +15,7 @@ const Navbar = () => {
             .catch(error => console.log(error));
     }
 
-    const isAdmin = null;
+    const isAdmin = true;
 
     const navRoutes = <>
         <li className="font-bold"><NavLink to="/">Home</NavLink></li>
