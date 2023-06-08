@@ -41,7 +41,7 @@ const Banner = () => {
                 sliderCategories.map(category => <SwiperSlide key={category._id}>
                     <div className=''>
                         <img className='relative h-[400px] md:h-[600px] object-cover' src={category.image} style={{ width: '100%' }} alt="" />
-                        <div className="absolute flex items-center justify-center text-center h-full left-0 bottom-0 right-0 rounded bg-gradient-to-t from-[#111010] to-[#11101030]">
+                        <div className="absolute flex items-center justify-center text-center h-full left-0 bottom-0 right-0 rounded bg-gradient-to-t from-[#1a1818] to-[#11101030]">
                             <div className='text-white space-y-6 w-5/6 lg:w-1/2 mx-auto'>
                                 <h2 className='text-4xl md:text-5xl lg:text-6xl font-bold'>{category.name}</h2>
                                 <p className='text-base'>{category.description}</p>

@@ -25,7 +25,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Successfully toasted!')
+                toast.success('Successfully logged in!')
                 reset();
                 navigate(from, { replace: true });
         })

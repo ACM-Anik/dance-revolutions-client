@@ -12,8 +12,9 @@ const Classes = () => {
                 console.log(data);
                 setClasses(data);
             })
-    }, [])
+    }, []);
 
+    
     return (
         <div>
             <div className="my-8">
@@ -21,7 +22,11 @@ const Classes = () => {
             </div>
             <div className="my-10 ">
                 {
-                    approvedClasses.map(classes => <ApprovedClassCard key={classes._id} classes={classes}></ApprovedClassCard>)
+                    approvedClasses.map(classes =>
+                        <ApprovedClassCard
+                            key={classes._id}
+                            classes={classes}
+                        ></ApprovedClassCard>)
                 }
             </div>
         </div>
