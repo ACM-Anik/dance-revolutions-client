@@ -10,6 +10,7 @@ const ApprovedClassCard = ({ classes }) => {
     const  [disabled, setDisabled] = useState(false);
 
     useEffect(() => {
+        // TODO: user disable problem  
         if(availableSeats === 0 || user ? user?.role === "Admin" :  "Instructor"){
             setDisabled(true);
         }
@@ -17,7 +18,7 @@ const ApprovedClassCard = ({ classes }) => {
     }, [availableSeats, user])
 
     const handleSelect = () => {
-
+        // TODO: Select 
     }
 
     return (

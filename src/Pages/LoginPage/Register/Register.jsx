@@ -3,8 +3,8 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import { toast } from "react-hot-toast";
 
 
 const Register = () => {
@@ -35,13 +35,7 @@ const Register = () => {
                                 console.log(data);
                                 if (data.insertedId) {
                                     reset();
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'User created successfully.',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
+                                    toast.success('Successfully registered!')
                                     navigate('/');
                                 }
                             })

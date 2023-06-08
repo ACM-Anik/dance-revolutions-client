@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import Swal from "sweetalert2";
+import { toast } from "react-hot-toast";
+
 
 
 const Login = () => {
@@ -24,15 +25,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                Swal.fire({
-                    title: 'User Login Successful.',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                });
+                toast.success('Successfully toasted!')
                 reset();
                 navigate(from, { replace: true });
         })
