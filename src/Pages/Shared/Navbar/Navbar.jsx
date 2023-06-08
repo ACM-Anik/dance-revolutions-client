@@ -15,11 +15,14 @@ const Navbar = () => {
             .catch(error => console.log(error));
     }
 
+    const isAdmin = null;
 
     const navRoutes = <>
         <li className="font-bold"><NavLink to="/">Home</NavLink></li>
         {user &&
-            <li className="font-bold"><NavLink to="/dashboard">Dashboard</NavLink></li>}
+            <li className="font-bold"><NavLink to={ isAdmin ? "/dashboard/adminHome" : "/dashboard/studentHome"}>Dashboard</NavLink></li>
+        }
+        {/* <li><NavLink to="/dashboard/mySelectedClasses">dashboard</NavLink></li> */}
         <li className="font-bold"><NavLink to="/classes">classes</NavLink></li>
         <li className="font-bold"><NavLink to="/instructors">Instructors</NavLink></li>
     </>
@@ -44,7 +47,7 @@ const Navbar = () => {
                         <label tabIndex={0} className="btn btn-ghost btn-circle lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
+                        <ul tabIndex={0} className="z-50 menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
                             {navRoutes}
                             {navIcons}
                         </ul>

@@ -2,7 +2,7 @@ import { Link, useRouteError } from 'react-router-dom';
 import err from '../../../assets/404.jpg';
 
 const ErrorPage = () => {
-    const { error } = useRouteError()
+    const { error } = useRouteError();
 
     return (
         <div className="hero min-h-screen" >
@@ -12,10 +12,11 @@ const ErrorPage = () => {
 
                     <div className='max-w-lg text-center'>
                         <img className='w-[600px] shadow-xl rounded' src={err} alt="404" />
+                        {/* TODO: */}
                         <p className=' font-semibold md:text-2xl mb-8'>
-                            {error?.message}
+                            {error && error?.message}
                         </p>
-                        <Link to='/' className='btn text-white rounded-lg border-0 bg-black hover:bg-[#1b1b1b]'>
+                        <Link to='/' className='btn text-white rounded-lg border-0 bg-black hover:bg-[#1b1b1b] my-4'>
                             Back to homepage
                         </Link>
                     </div>
