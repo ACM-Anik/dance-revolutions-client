@@ -3,7 +3,10 @@
 const Classes = () => {
     return (
         <div>
-            <h1>classes</h1>
+            <div><h1>classes</h1></div>
+            <div>
+                
+            </div>
         </div>
     );
 };

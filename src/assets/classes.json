@@ -1,0 +1,81 @@
+{
+    "danceClasses": [
+        {
+            "name": "Ballet",
+            "photo": "https://i.ibb.co/TqncB3G/Ballet.jpg",
+            "instructor": "John Doe",
+            "instructorPhoto": "https://i.ibb.co/qJrqdzN/Ballet.jpg",
+            "instructorEmail": "john.doe@gmail.com",
+            "seats": 30,
+            "availableSeats": 10,
+            "price": 50,
+            "status": "Approved"
+        },
+        {
+            "name": "Hip Hop",
+            "photo": "https://i.ibb.co/5hbjKBx/Hip-hop.jpg",
+            "instructor": "Jane Smith",
+            "instructorPhoto": "https://i.ibb.co/wSTxfgf/Hip-hop.jpg",
+            "instructorEmail": "jane.smith@gmail.com",
+            "seats": 30,
+            "availableSeats": 5,
+            "price": 75,
+            "status": "Pending"
+        },
+        {
+            "name": "Break Dance",
+            "photo": "https://i.ibb.co/dmpVmKL/Break-dance.jpg",
+            "instructor": "Michael Johnson",
+            "instructorPhoto": "https://i.ibb.co/bR7Dc8J/Break-dance.jpg",
+            "instructorEmail": "michael.johnson@gmail.com",
+            "seats": 30,
+            "availableSeats": 5,
+            "price": 100,
+            "status": "Approved"
+        },
+        {
+            "name": "Classic",
+            "photo": "https://i.ibb.co/TcpXczQ/Classic.jpg",
+            "instructor": "Sarah Wilson",
+            "instructorPhoto": "https://i.ibb.co/Cn7Qz1q/classic.jpg",
+            "instructorEmail": "sarah.wilson@gmail.com",
+            "seats": 30,
+            "availableSeats": 8,
+            "price": 60,
+            "status": "Pending"
+        },
+        {
+            "name": "BharatNatyam",
+            "photo": "https://i.ibb.co/PcDTcNh/Bharatnatyam.jpg",
+            "instructor": "Rajesh Patel",
+            "instructorPhoto": "https://i.ibb.co/Lx10xPr/Bharat-Natyam.jpg",
+            "instructorEmail": "rajesh.patel@gmail.com",
+            "seats": 30,
+            "availableSeats": 15,
+            "price": 80,
+            "status": "Approved"
+        },
+        {
+            "name": "Salsa",
+            "photo": "https://i.ibb.co/x5Rngrc/Salsa.jpg",
+            "instructor": "Maria Gonzalez",
+            "instructorPhoto": "https://i.ibb.co/KG4FzT7/Salsa.jpg",
+            "instructorEmail": "maria.gonzalez@gmail.com",
+            "seats": 30,
+            "availableSeats": 20,
+            "price": 70,
+            "status": "Pending"
+        },
+        {
+            "name": "Jazz",
+            "photo": "https://i.ibb.co/L0gW937/Jazz.jpg",
+            "instructor": "David Smith",
+            "instructorPhoto": "https://i.ibb.co/gRYvs7f/Jazz.jpg",
+            "instructorEmail": "david.smith@gmail.com",
+            "seats": 30,
+            "availableSeats": 25,
+            "price": 55,
+            "status": "Approved"
+        }
+    ]
+}

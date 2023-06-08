@@ -16,7 +16,7 @@ const Banner = () => {
             .then(res => res.json())
             .then(data => {
                 setSliderCategories(data);
-                console.log(data);
+                // console.log(data);
             })
     }, [])
 
