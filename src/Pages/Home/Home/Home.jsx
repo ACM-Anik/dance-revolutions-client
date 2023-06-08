@@ -9,7 +9,7 @@ const Home = () => {
     const [topClasses, setTopClasses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/top-classes')
+        fetch('http://localhost:5000/topClasses')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
