@@ -76,8 +76,32 @@ const ManageUsers = () => {
     }
 
     const handleDelete = (user) => {
-        console.log(user);
-        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/${user._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'User has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
     }
 
     return (
@@ -107,13 +131,13 @@ const ManageUsers = () => {
                                 <td className="text-base font-semibold">{user.name}</td>
                                 <td className="text-base font-semibold">{user.email}</td>
                                 <td className="text-base font-semibold">
-                                    {user.role === 'Instructor' ? <span className="text-base font-semibold text-center">Instructor</span> : <button onClick={() => handleMakeInstructor(user)} className="btn bg-black  text-white">Make Instructor</button>}
+                                    {user.role === 'Instructor' ? <span className="text-base font-semibold text-center">Instructor</span> : <button onClick={() => handleMakeInstructor(user)} className="btn bg-black  text-white hover:text-black">Make Instructor</button>}
                                 </td>
                                 <td>
-                                    {user.role === 'Admin' ? <span className="text-base font-semibold text-center">Admin</span> : <button onClick={() => handleMakeAdmin(user)} className="btn bg-black  text-white">Make Admin</button>}
+                                    {user.role === 'Admin' ? <span className="text-base font-semibold text-center">Admin</span> : <button onClick={() => handleMakeAdmin(user)} className="btn bg-black  text-white hover:text-black">Make Admin</button>}
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
+                                    <button onClick={() => handleDelete(user)} className="btn  bg-red-600  text-white hover:text-black"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
                             </tr>)
                         }
