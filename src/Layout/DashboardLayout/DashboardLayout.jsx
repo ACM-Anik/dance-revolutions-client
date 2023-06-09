@@ -1,17 +1,22 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUsers, FaCalendarWeek, FaUpload } from 'react-icons/fa';
+import useRole from "../../Hooks/useRole";
+// import { useContext } from "react";
+// import { AuthContext } from "../../Providers/AuthProvider";
 
 const DashboardLayout = () => {
-
-    const isAdmin = true;
+    const [isAdmin, isInstructor] = useRole();
+    // const {user, loading} = useContext(AuthContext);
+    // const isAdmin = null;
+    // const isInstructor = null;
 
     return (
         <div>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center p-4">
-                    <label htmlFor="my-drawer-2 " className="btn border-2 border-[#2088d8] drawer-button lg:hidden">Options</label>
                     <Outlet></Outlet>
+                    <label htmlFor="my-drawer-2 " className="btn border-2 border-[#2088d8] drawer-button lg:hidden">Options</label>
 
                 </div>
                 <div className="drawer-side">
@@ -25,18 +30,20 @@ const DashboardLayout = () => {
                                     <li><NavLink to="manageUsers"><FaUsers></FaUsers> Manage Users</NavLink></li>
                                 </>
                                 :
+                                (
+                                    isInstructor ?
+
+                                    <li><NavLink to="/dashboard/addAClass"><FaUpload></FaUpload>Add A Class</NavLink></li>
+                                :    
                                 <>
                                     <li><NavLink to="studentHome"><FaHome></FaHome> Student Dashboard</NavLink></li>
                                     <li><NavLink to="mySelectedClasses"><FaCalendarWeek></FaCalendarWeek> My Selected Classes</NavLink></li>
                                     <li><NavLink to="myEnrolledClasses"><FaShoppingCart></FaShoppingCart> My Enrolled Classes</NavLink></li>
                                     <li><NavLink to="paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
                                 </>
+                                    
+                            )
                         }
-                        <li><NavLink to="/dashboard/addItem"><FaUpload></FaUpload>Add An Item</NavLink></li>
-                        <div className="divider"></div>
-                        <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
-                        <li><NavLink to="/classes">Classes</NavLink></li>
-                        <li><NavLink to="/instructors">Instructors</NavLink></li>
                     </ul>
                 </div>
             </div>

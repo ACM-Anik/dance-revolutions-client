@@ -15,6 +15,7 @@ import AddAClass from "../../Pages/Dashboard/InstructorDashboard/AddAClass";
 import AdminHome from "../../Pages/Dashboard/AdminDashboard/AdminHome";
 import ManageClasses from "../../Pages/Dashboard/AdminDashboard/ManageClasses";
 import ManageUsers from "../../Pages/Dashboard/AdminDashboard/ManageUsers";
+import AdminRoute from "../AdminRoute/AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -77,35 +78,16 @@ const router = createBrowserRouter([
                     // Admin Routes:-
                     {
                         path: 'adminHome',
-                        element: <AdminHome></AdminHome>
+                        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
                     },
                     {
                         path: 'manageUsers',
-                        element: <ManageUsers></ManageUsers>
+                        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
                     },
                     {
                         path: 'manageClasses',
-                        element: <ManageClasses></ManageClasses>
+                        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
                     }
-
-                    // Instructor:-
-                    // {
-                    //     path: 'addItem',
-                    //     element: <AdminRoute><AddItem></AddItem></AdminRoute>
-                    // },
-                    // Admin Routes:-
-                    // {
-                    //     path: 'adminHome',
-                    //     element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
-                    // },
-                    // {
-                    //     path: 'manageUsers',
-                    //     element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-                    // },
-                    // {
-                    //     path: 'manageItems',
-                    //     element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
-                    // }
                 ]
             }
         ]

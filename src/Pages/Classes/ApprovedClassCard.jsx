@@ -5,8 +5,8 @@ import { toast } from "react-hot-toast";
 
 
 const ApprovedClassCard = ({ classes }) => {
-    const {_id, name, photo, price, availableSeats, instructor } = classes;
-    
+    const { _id, name, photo, price, availableSeats, instructor } = classes;
+
     const { user } = useContext(AuthContext);
     const [disabled, setDisabled] = useState(false);
     const navigate = useNavigate();
@@ -46,30 +46,31 @@ const ApprovedClassCard = ({ classes }) => {
 
 
     const handleSelect = (classes) => {
-        if (!user) {
-            navigate('/login', {state: {from: location}})
-            toast.error("Sorry! You have to login first.");
-            return;
-        }
-
         // TODO: post the Selected class 
         console.log(classes);
 
-        const selectedClass = {selectedId: _id, name, photo, price, availableSeats, email: user.email};
+        if (user) {
+            const selectedClass = { selectedId: _id, name, photo, price, availableSeats, email: user.email };
 
-        fetch('http://localhost:5000/selectedClasses', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(selectedClass)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.insertedId){
-                toast.success("Successfully selected!");
-            }
-        })
+            fetch('http://localhost:5000/selectedClasses', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(selectedClass)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        toast.success("Successfully selected!");
+                    }
+                })
+        }
+        else {
+            toast.error("Sorry! You have to login first.");
+            navigate('/login', { state: { from: location } });
+        }
+
     }
 
 
