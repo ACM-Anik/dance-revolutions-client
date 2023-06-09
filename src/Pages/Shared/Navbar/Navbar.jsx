@@ -2,13 +2,15 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../../assets/logo.png';
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import useRole from "../../../Hooks/useRole";
+import useAdmin from "../../../Hooks/useAdmin";
+import useInstructor from "../../../Hooks/useInstructor";
 
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [isAdmin, isInstructor] = useRole();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     const handleLogOut = () => {
 
         logOut()
@@ -25,7 +27,7 @@ const Navbar = () => {
                     :
                     (
                         isInstructor ? 
-                            "/dashboard/myClasses"
+                            "/dashboard/instructorHome"
                             :
                             "/dashboard/studentHome"
                     )

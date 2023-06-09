@@ -1,11 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUsers, FaCalendarWeek, FaUpload } from 'react-icons/fa';
-import useRole from "../../Hooks/useRole";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
+
 // import { useContext } from "react";
 // import { AuthContext } from "../../Providers/AuthProvider";
 
 const DashboardLayout = () => {
-    const [isAdmin, isInstructor] = useRole();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     // const {user, loading} = useContext(AuthContext);
     // const isAdmin = null;
     // const isInstructor = null;

@@ -9,18 +9,17 @@ const Classes = () => {
         fetch('http://localhost:5000/approvedClasses')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setClasses(data);
             })
     }, []);
 
     
     return (
-        <div>
-            <div className="my-8">
+        <div className="bg-[#2088d851]">
+            <div className="py-8">
                 <h1 className="text-3xl font-bold border-l-4 border-[#2088d8] p-2">Our Classes</h1>
             </div>
-            <div className="my-10 ">
+            <div className="py-10 ">
                 {
                     approvedClasses.map(classes =>
                         <ApprovedClassCard

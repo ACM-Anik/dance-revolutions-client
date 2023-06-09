@@ -4,11 +4,10 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 
 
-const useRole = () => {
+const useAdmin = () => {
     const {user, loading} = useContext(AuthContext);
     const  [axiosSecure] = useAxiosSecure();
 
-    // Admin:
     const {data: isAdmin, isLoading: isAdminLoading} = useQuery({
         queryKey: ['isAdmin', user?.email],
         enabled: !loading,
@@ -18,16 +17,6 @@ const useRole = () => {
         }
     })
 
-    // Instructor:
-    const {data: isInstructor, isLoading: isInstructorLoading} = useQuery({
-        queryKey: ['isInstructor', user?.email],
-        enabled: !loading,
-        queryFn: async () => {
-            const res = await axiosSecure.get(`/users/instructor/${user?.email}`);
-            return res.data.Instructor;
-        }
-    })
-
-    return [isAdmin, isAdminLoading, isInstructor, isInstructorLoading];
+    return [isAdmin, isAdminLoading];
 }
-export default useRole;
+export default useAdmin;

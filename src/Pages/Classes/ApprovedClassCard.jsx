@@ -2,12 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 
 const ApprovedClassCard = ({ classes }) => {
     const { _id, name, photo, price, availableSeats, instructor } = classes;
 
     const { user } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     const [disabled, setDisabled] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -21,14 +25,15 @@ const ApprovedClassCard = ({ classes }) => {
         // }
 
         if (user) {
-            if (user?.role === "Admin") {
+            console.log("App", user)
+            if (isAdmin || isInstructor) {
                 setDisabled(true);
                 return;
             }
-            else if (user?.role === "Instructor") {
-                setDisabled(true);
-                return;
-            }
+            // else if () {
+            //     setDisabled(true);
+            //     return;
+            // }
             else {
                 setDisabled(false);
             }
@@ -42,7 +47,7 @@ const ApprovedClassCard = ({ classes }) => {
             setDisabled(false);
         }
 
-    }, [availableSeats, user]);
+    }, [availableSeats, user, isAdmin, isInstructor]);
 
 
     const handleSelect = (classes) => {
@@ -75,13 +80,15 @@ const ApprovedClassCard = ({ classes }) => {
 
 
     return (
-        <div className={`md:flex justify-between card-compact ${availableSeats === 0 ? "bg-red-500" : "bg-base-100"} shadow-xl border-2 rounded mx-20 my-8`}>
-            <figure><img src={photo} alt="Dance" className="h-[320px] w-[480px] object-cover p-5 rounded" /></figure>
-            <div className="card-body gap-0">
-                <h2 className="text-3xl font-bold">{name}</h2>
-                <p className="text-base font-semibold">Instructor: {instructor}</p>
-                <p className="text-base font-semibold">Available: {availableSeats} seats</p>
-                <p className="text-base font-semibold">Price: ${price}</p>
+        <div className={`grid md:grid-cols-2 justify-between card-compact ${availableSeats === 0 ? "bg-red-500" : "bg-base-100"} shadow-xl border-2 rounded mx-20 my-8`}>
+            <figure><img src={photo} alt="Dance" className="h-[320px] lg:h-[380px] w-[400px] lg:w-[500px] object-cover p-5 rounded" /></figure>
+            <div className="flex flex-col justify-between p-4 gap-4">
+                <div className="flex flex-col gap-4">
+                    <h2 className="text-5xl font-bold">{name}</h2>
+                    <p className="text-base font-semibold">Instructor: {instructor}</p>
+                    <p className="text-base font-semibold">Available: {availableSeats} seats</p>
+                    <p className="text-base font-semibold">Price: ${price}</p>
+                </div>
                 <div className="card-actions justify-end">
                     <button disabled={disabled} onClick={() => handleSelect(classes)} className="btn border-black bg-[#FFFFFF]">Select</button>
                 </div>
