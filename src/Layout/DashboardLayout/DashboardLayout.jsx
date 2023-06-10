@@ -26,9 +26,9 @@ const DashboardLayout = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                         {
-                            isAdmin ? 
+                            isAdmin ?
                                 <>
-                                    <li><NavLink to="adminHome"><FaHome></FaHome> Admin Home</NavLink></li>
+                                    <li><NavLink to="adminHome"><FaHome></FaHome>Dashboard Home</NavLink></li>
                                     <li><NavLink to="manageClasses"><FaCalendarAlt></FaCalendarAlt> Manage Classes</NavLink></li>
                                     <li><NavLink to="manageUsers"><FaUsers></FaUsers> Manage Users</NavLink></li>
                                 </>
@@ -36,16 +36,20 @@ const DashboardLayout = () => {
                                 (
                                     isInstructor ?
 
-                                    <li><NavLink to="/dashboard/addAClass"><FaUpload></FaUpload>Add A Class</NavLink></li>
-                                :    
-                                <>
-                                    <li><NavLink to="studentHome"><FaHome></FaHome> Student Dashboard</NavLink></li>
-                                    <li><NavLink to="mySelectedClasses"><FaCalendarWeek></FaCalendarWeek> My Selected Classes</NavLink></li>
-                                    <li><NavLink to="myEnrolledClasses"><FaShoppingCart></FaShoppingCart> My Enrolled Classes</NavLink></li>
-                                    <li><NavLink to="paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
-                                </>
-                                    
-                            )
+                                        <>
+                                            <li><NavLink to="/dashboard/instructorHome"><FaUpload></FaUpload>Dashboard Home</NavLink></li>
+                                            <li><NavLink to="/dashboard/addAClass"><FaUpload></FaUpload>Add A Class</NavLink></li>
+                                            <li><NavLink to="/dashboard/myAddedClasses"><FaUpload></FaUpload>My Added Classes</NavLink></li>
+                                        </>
+                                        :
+                                        <>
+                                            <li><NavLink to="studentHome"><FaHome></FaHome>Dashboard Home</NavLink></li>
+                                            <li><NavLink to="mySelectedClasses"><FaCalendarWeek></FaCalendarWeek> My Selected Classes</NavLink></li>
+                                            <li><NavLink to="myEnrolledClasses"><FaShoppingCart></FaShoppingCart> My Enrolled Classes</NavLink></li>
+                                            <li><NavLink to="paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
+                                        </>
+
+                                )
                         }
                     </ul>
                 </div>
