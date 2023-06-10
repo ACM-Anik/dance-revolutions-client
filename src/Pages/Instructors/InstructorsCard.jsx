@@ -8,7 +8,7 @@ const InstructorsCard = ({ instructor }) => {
 
     return (
         <div className="grid md:grid-cols-2  bg-base-100 shadow-xl border-2 rounded mx-20 my-8">
-            <figure><img src={photo} alt="Dance" className="h-[320px] lg:h-[380px] md:w-[380px] lg:w-full object-cover p-5 rounded" /></figure>
+            <figure><img src={photo} alt="Dance" className="h-[320px] lg:h-[380px] md:w-[380px] lg:w-full object-cover p-5 rounded-lg" /></figure>
             <div className="p-5 flex flex-col justify-center gap-4">
                 <div>
                     <h2 className="text-4xl font-bold">{name}</h2>

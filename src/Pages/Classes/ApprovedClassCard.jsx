@@ -19,23 +19,10 @@ const ApprovedClassCard = ({ classes }) => {
 
 
     useEffect(() => {
-        // if(availableSeats === 0 || user ? user.role === "Admin" : user.role === "Instructor"){
-        //     setDisabled(true);
-        //     return;
-        // }
-
         if (user) {
-            console.log("App", user)
             if (isAdmin || isInstructor) {
                 setDisabled(true);
                 return;
-            }
-            // else if () {
-            //     setDisabled(true);
-            //     return;
-            // }
-            else {
-                setDisabled(false);
             }
         }
 
@@ -43,16 +30,12 @@ const ApprovedClassCard = ({ classes }) => {
             setDisabled(true);
             return;
         }
-        else {
-            setDisabled(false);
-        }
 
     }, [availableSeats, user, isAdmin, isInstructor]);
 
 
-    const handleSelect = (classes) => {
+    const handleSelect = () => {
         // TODO: post the Selected class 
-        console.log(classes);
 
         if (user) {
             const selectedClass = { selectedId: _id, name, photo, price, availableSeats, email: user.email };
@@ -67,7 +50,13 @@ const ApprovedClassCard = ({ classes }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
+                        setDisabled(true);
                         toast.success("Successfully selected!");
+                    }
+                    if (data.exists) {
+                        setDisabled(true);
+                        toast.error("Already exists!");
+                        console.log(data);
                     }
                 })
         }
@@ -81,7 +70,7 @@ const ApprovedClassCard = ({ classes }) => {
 
     return (
         <div className={`grid md:grid-cols-2 justify-between card-compact ${availableSeats === 0 ? "bg-red-500" : "bg-base-100"} shadow-xl border-2 rounded mx-20 my-8`}>
-            <figure><img src={photo} alt="Dance" className="h-[320px] lg:h-[380px] w-[400px] lg:w-[500px] object-cover p-5 rounded" /></figure>
+            <figure><img src={photo} alt="Dance" className="h-[320px] lg:h-[380px] w-[400px] lg:w-full object-cover p-5 rounded-lg" /></figure>
             <div className="flex flex-col justify-between p-4 gap-4">
                 <div className="flex flex-col gap-4">
                     <h2 className="text-5xl font-bold">{name}</h2>
@@ -90,7 +79,7 @@ const ApprovedClassCard = ({ classes }) => {
                     <p className="text-base font-semibold">Price: ${price}</p>
                 </div>
                 <div className="card-actions justify-end">
-                    <button disabled={disabled} onClick={() => handleSelect(classes)} className="btn border-black bg-[#FFFFFF]">Select</button>
+                    <button disabled={disabled} onClick={() => handleSelect(classes)} className="btn border-black bg-[#FFFFFF]">Select The Class</button>
                 </div>
             </div>
         </div>
