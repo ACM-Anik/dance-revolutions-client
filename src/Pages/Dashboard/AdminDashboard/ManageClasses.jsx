@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "react-query";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const ManageClasses = () => {
@@ -35,7 +36,7 @@ const ManageClasses = () => {
                 <title>Manage Classes | Dance Revolutions</title>
             </Helmet>
             <div className="mt-6 mb-10">
-                <h1 className="text-3xl font-bold border-l-4 border-[#2088d8] p-2">Manage Users</h1>
+                <h1 className="text-3xl font-bold border-l-4 border-[#2088d8] p-2">Manage Classes</h1>
             </div>
             <div>
                 {allClasses.map((single) => (
@@ -72,7 +73,7 @@ const ManageClasses = () => {
                                         className="btn btn-ghost border-2 border-black text-black hover:text-white hover:bg-red-600">Deny</button>
 
                                 }
-                                <button className="btn btn-ghost border-2 border-black text-black hover:text-white hover:bg-black">Send Feedback</button>
+                                <Link to={`/manageFeedback/${single._id}`}><button className="btn btn-ghost border-2 border-black text-black hover:text-white hover:bg-black">Send Feedback</button></Link>
                             </div>
                         </div>
                     </div>

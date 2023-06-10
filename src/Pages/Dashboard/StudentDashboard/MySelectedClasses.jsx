@@ -55,24 +55,27 @@ const MySelectedClasses = () => {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full bg-[#2088d851] h-full">
             <Helmet>
                 <title>My Selected Classes | Dance Revolutions</title>
             </Helmet>
-            <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
-                <h3 className="text-3xl">Total Items: {selectedClasses.length}</h3>
-                <h3 className="text-3xl">Total Price: ${price}</h3>
-                <Link to="/dashboard/payment"><button className="btn btn-warning btn-sm">PAY</button></Link>
+            <div className="py-8">
+                <h1 className="text-3xl font-bold border-l-4 border-[#2088d8] p-2">My Selected Classes</h1>
             </div>
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
+            <div className="uppercase font-semibold h-[70px] flex justify-center items-center gap-8">
+                <h3 className="text-3xl bg-base-100 p-4 rounded-lg">Total Class: {selectedClasses.length}</h3>
+                <h3 className="text-3xl bg-base-100 p-4 rounded-lg">Total Price: ${price}</h3>
+                <Link to="/dashboard/payment"><button className="btn btn-sm bg-black text-white ">PAY</button></Link>
+            </div>
+            <div className="overflow-x-auto w-full p-10">
+                <table className="table w-full bg-base-100">
+                    <thead className="">
+                        <tr className="bg-black text-white rounded-lg">
                             <th>#</th>
-                            <th>Classes</th>
-                            <th>Class Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                            <th className="text-center">Classes</th>
+                            <th className="text-center">Class Name</th>
+                            <th className="text-center">Price</th>
+                            <th className="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,18 +86,18 @@ const MySelectedClasses = () => {
                                 <td>
                                     {index + 1}
                                 </td>
-                                <td>
+                                <td className="text-center">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
                                             <img src={single.photo} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td className="text-center">
                                     {single.name}
                                 </td>
                                 <td className="text-center">${single.price}</td>
-                                <td>
+                                <td className="text-center">
                                     <button onClick={() => handleDelete(single)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
                             </tr>)
