@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { toast } from "react-hot-toast";
 
 // ToDo:----
 // const img_hosting_token = import.meta.env.VITE_Image_upload_token;
@@ -26,7 +26,7 @@ const AddAClass = () => {
         const price = form.price.value;
         const availableSeats = form.availableSeats.value;
 
-        const newClass = { name, photo, instructor, instructorEmail, price: parseFloat(price), seats: 30, availableSeats: parseFloat(availableSeats), status: 'Pending' }
+        const newClass = { name, photo, instructor, instructorEmail, price: parseFloat(price), seats: 30, availableSeats: parseFloat(availableSeats), status: 'Pending' };
         console.log(newClass);
 
         // const formData = new FormData();
@@ -49,13 +49,7 @@ const AddAClass = () => {
                         .then(data => {
                             console.log("After posting new menu item", data.data);
                             if (data.data.insertedId) {
-                                Swal.fire({
-                                    position: 'center',
-                                    icon: 'success',
-                                    title: 'Item added successfully!',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
+                                toast.success('Successfully Added!')
                             }
                         })
             //     }
@@ -68,7 +62,7 @@ const AddAClass = () => {
                 <title>Add A Class | Dance Revolutions</title>
             </Helmet>
             <div className="py-8">
-                <h1 className="text-3xl font-bold border-l-4 border-[#2088d8] p-2">My Selected Classes</h1>
+                <h1 className="text-3xl font-bold border-l-4 border-[#2088d8] p-2">Add A Class</h1>
             </div>
             <div className="px-6">
                 <form onSubmit={handleAddClass}>

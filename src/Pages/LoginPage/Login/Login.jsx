@@ -38,9 +38,9 @@ const Login = () => {
                 <title>Login | Dance Revolutions</title>
             </Helmet>
             <div className="hero min-h-screen ">
-                <div className="hero-content flex-col lg:flex-row-reverse gap-0 h-[600px] w-full ">
+                <div className="hero-content flex-col lg:flex-row-reverse gap-0 lg:h-[600px] w-full ">
                     <div className="text-center md:w-1/2 lg:text-left h-full">
-                        <img src="https://i.ibb.co/x2NMHCz/loginjpg.jpg" alt="" className="h-full"/>
+                        <img src="https://i.ibb.co/x2NMHCz/loginjpg.jpg" alt="" className="h-full object-cover"/>
                     </div>
                     <div className="card md:w-1/2 max-w-sm bg-base-100 h-full rounded-none">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">

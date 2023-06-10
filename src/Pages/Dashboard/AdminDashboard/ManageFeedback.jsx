@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import { useRef } from 'react';
+import { toast } from "react-hot-toast";
 
 
 
@@ -21,7 +22,8 @@ const ManageFeedback = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Class updated successfully:', data);
+                console.log('Feedback Sent successfully:', data);
+                toast.success('Successfully feedback sent !')
             })
     };
 

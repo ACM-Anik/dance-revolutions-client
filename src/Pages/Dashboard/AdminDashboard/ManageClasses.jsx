@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 
 const ManageClasses = () => {
@@ -19,6 +20,7 @@ const ManageClasses = () => {
             .then(() => {
                 setDisabledStates(prevState => ({...prevState, [single._id]: true}));
                 refetch();
+                toast.success('Successfully approved the class!')
             });
     };
 
@@ -27,6 +29,7 @@ const ManageClasses = () => {
             .then(() => {
                 setDisabledStates(prevState => ({...prevState,[single._id]: true}));
                 refetch();
+                toast.success('Successfully denied the class!')
             });
     };
 

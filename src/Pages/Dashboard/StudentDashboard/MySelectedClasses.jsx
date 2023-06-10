@@ -10,8 +10,8 @@ import { FaTrashAlt } from "react-icons/fa";
 
 const MySelectedClasses = () => {
     const { user, loading } = useContext(AuthContext);
-
     const [axiosSecure] = useAxiosSecure();
+    
     const { refetch, data: selectedClasses = [] } = useQuery({
         enabled: !loading,
         queryKey: ['selectedClasses', user?.email],
