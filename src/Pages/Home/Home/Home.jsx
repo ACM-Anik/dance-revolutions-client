@@ -3,6 +3,7 @@ import Banner from "../Banner/Banner";
 import TopClasses from "../TopClasses/TopClasses";
 import TopInstructors from "../TopInstructors/TopInstructors";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
+import OverlaySection from "../OverlaySection/OverlaySection";
 
 
 const Home = () => {
@@ -20,6 +21,9 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <div className="my-20">
+                <OverlaySection></OverlaySection>
+            </div>
             <div className="my-20 mx-auto">
                 <SectionTitle subHeading="Book Your Seat" heading="OUR TOP CLASSES"></SectionTitle>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
@@ -36,6 +40,7 @@ const Home = () => {
                     }
                 </div>
             </div>
+            
         </div>
     );
 };
