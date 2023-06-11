@@ -40,7 +40,7 @@ const ApprovedClassCard = ({ classes }) => {
         if (user) {
             const selectedClass = { selectedId: _id, name, photo, price, availableSeats, email: user.email };
 
-            fetch('https://dance-revolutions-server.vercel.app/selectedClasses', {
+            fetch('http://localhost:5000/selectedClasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -52,6 +52,11 @@ const ApprovedClassCard = ({ classes }) => {
                     if (data.insertedId) {
                         setDisabled(true);
                         toast.success("Successfully selected!");
+                    }
+                    if (data.enrolled) {
+                        setDisabled(true);
+                        toast.error("Already Enrolled!");
+                        console.log(data);
                     }
                     if (data.exists) {
                         setDisabled(true);

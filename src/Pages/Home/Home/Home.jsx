@@ -10,7 +10,7 @@ const Home = () => {
     const [topClasses, setTopClasses] = useState([]);
 
     useEffect(() => {
-        fetch('https://dance-revolutions-server.vercel.app/topClasses')
+        fetch('http://localhost:5000/topClasses')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

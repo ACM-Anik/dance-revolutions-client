@@ -6,7 +6,7 @@ const Classes = () => {
     const [approvedClasses, setClasses] = useState([]);
 
     useEffect(() => {
-        fetch('https://dance-revolutions-server.vercel.app/approvedClasses')
+        fetch('http://localhost:5000/approvedClasses')
             .then(res => res.json())
             .then(data => {
                 setClasses(data);
