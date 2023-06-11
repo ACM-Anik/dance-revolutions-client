@@ -6,28 +6,30 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 
-const CheckoutForm = ({selectedClass}) => {
+const CheckoutForm = ({ selectedClass }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [axiosSecure] = useAxiosSecure();
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const navigate = useNavigate();
 
-    const {_id, name, selectedId, price } = selectedClass;
-    
+    const { _id, name, selectedId, price } = selectedClass;
+
     // console.log(typeof(price));
 
 
-    useEffect(()=>{
-        axiosSecure.post('/create-payment-intent', {price})
-        .then(res => {
-            // console.log(res.data.clientSecret);
-            setClientSecret(res.data.clientSecret);
-        })
-    },[axiosSecure, price]);
+    useEffect(() => {
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    // console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
+    }, [axiosSecure, price]);
 
 
     const handleSubmit = async (event) => {
@@ -42,7 +44,7 @@ const CheckoutForm = ({selectedClass}) => {
             return;
         }
 
-        const { error} = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
@@ -57,19 +59,19 @@ const CheckoutForm = ({selectedClass}) => {
 
         setProcessing(true);
 
-        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
-              payment_method: {
-                card: card,
-                billing_details: {
-                  name: user?.name || 'anonymous',
-                  email: user?.email || 'unknown',
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: user?.name || 'anonymous',
+                        email: user?.email || 'unknown',
+                    },
                 },
-              },
             },
-          );
-        if(confirmError){
+        );
+        if (confirmError) {
             console.log(confirmError);
         }
 

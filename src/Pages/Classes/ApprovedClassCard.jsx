@@ -40,7 +40,7 @@ const ApprovedClassCard = ({ classes }) => {
         if (user) {
             const selectedClass = { selectedId: _id, name, photo, price, availableSeats, email: user.email };
 
-            fetch('http://localhost:5000/selectedClasses', {
+            fetch('https://dance-revolutions-server.vercel.app/selectedClasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
