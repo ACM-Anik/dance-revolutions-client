@@ -100,10 +100,9 @@ const MySelectedClasses = () => {
                                 <td className="text-center">
                                     <button onClick={() => handleDelete(single)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
-                                <td className="text-center"><Link to="/dashboard/payment"><button className="btn btn-sm bg-black text-white ">PAY</button></Link></td>
+                                <td className="text-center"><Link to={`/dashboard/payment/${single._id}`}><button className="btn btn-sm bg-black text-white ">PAY</button></Link></td>
                             </tr>)
                         }
-
 
                     </tbody>
                 </table>
