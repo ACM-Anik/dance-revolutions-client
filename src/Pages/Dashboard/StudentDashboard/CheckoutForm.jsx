@@ -4,7 +4,6 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-// import { useQuery } from "react-query";
 
 
 const CheckoutForm = ({ selectedClass }) => {
@@ -17,14 +16,8 @@ const CheckoutForm = ({ selectedClass }) => {
     const [processing, setProcessing] = useState(false);
     const navigate = useNavigate();
 
-    const { _id, name, selectedId, price } = selectedClass;
+    const { _id, name, selectedId, price, photo, availableSeats, instructor } = selectedClass;
     // console.log(typeof(price));
-
-    // const { data: singleClass = [] } = useQuery(['allClasses'], async () => {
-    //     const res = await axiosSecure.get(`/allClasses/${selectedId}`);
-    //     return res.data;
-    // });
-    // console.log(singleClass);
 
     const handleReduceSeats = () => {
         axiosSecure.patch(`/allClasses/${selectedId}`)
@@ -95,11 +88,14 @@ const CheckoutForm = ({ selectedClass }) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 className: name,
+                photo,
                 price,
+                availableSeats,
                 selectId: _id,
                 date: new Date(),
                 quantity: selectedClass.length,
                 classId: selectedId,
+                instructor
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {

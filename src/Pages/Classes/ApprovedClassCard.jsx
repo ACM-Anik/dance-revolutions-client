@@ -38,7 +38,7 @@ const ApprovedClassCard = ({ classes }) => {
         // TODO: post the Selected class 
 
         if (user) {
-            const selectedClass = { selectedId: _id, name, photo, price, availableSeats, email: user.email };
+            const selectedClass = { selectedId: _id, name, photo, price, availableSeats, email: user.email, instructor };
 
             fetch('http://localhost:5000/selectedClasses', {
                 method: 'POST',

@@ -34,7 +34,7 @@ const ManageClasses = () => {
     };
 
     return (
-        <div>
+        <div className="pb-20 bg-[#2088d851]">
             <Helmet>
                 <title>Manage Classes | Dance Revolutions</title>
             </Helmet>
@@ -43,7 +43,7 @@ const ManageClasses = () => {
             </div>
             <div>
                 {allClasses.map((single) => (
-                    <div key={single._id} className="grid md:grid-cols-2 gap-6 my-4 p-4 shadow-lg border-2 rounded">
+                    <div key={single._id} className="grid md:grid-cols-2 gap-6 my-4 p-4 shadow-lg border-2 rounded bg-base-100">
                         <div className="flex flex-col gap-2">
                             <img src={single.photo} alt="class" className="h-[220px] lg:h-[280px] w-[380px] lg:w-full object-cover" />
                         </div>
