@@ -11,7 +11,7 @@ import { FaTrashAlt } from "react-icons/fa";
 const MySelectedClasses = () => {
     const { user, loading } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
-    
+
     const { refetch, data: selectedClasses = [] } = useQuery({
         enabled: !loading,
         queryKey: ['selectedClasses', user?.email],
@@ -65,7 +65,6 @@ const MySelectedClasses = () => {
             <div className="uppercase font-semibold h-[70px] flex justify-center items-center gap-8">
                 <h3 className="text-3xl bg-base-100 p-4 rounded-lg">Total Class: {selectedClasses.length}</h3>
                 <h3 className="text-3xl bg-base-100 p-4 rounded-lg">Total Price: ${price}</h3>
-                <Link to="/dashboard/payment"><button className="btn btn-sm bg-black text-white ">PAY</button></Link>
             </div>
             <div className="overflow-x-auto w-full p-10">
                 <table className="table w-full bg-base-100">
@@ -76,6 +75,7 @@ const MySelectedClasses = () => {
                             <th className="text-center">Class Name</th>
                             <th className="text-center">Price</th>
                             <th className="text-center">Action</th>
+                            <th className="text-center">Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,6 +100,7 @@ const MySelectedClasses = () => {
                                 <td className="text-center">
                                     <button onClick={() => handleDelete(single)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
+                                <td className="text-center"><Link to="/dashboard/payment"><button className="btn btn-sm bg-black text-white ">PAY</button></Link></td>
                             </tr>)
                         }
 

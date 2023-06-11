@@ -50,6 +50,7 @@ const AddAClass = () => {
                             console.log("After posting new menu item", data.data);
                             if (data.data.insertedId) {
                                 toast.success('Successfully Added!')
+                                form.reset();
                             }
                         })
             //     }

@@ -1,30 +1,27 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useRef } from 'react';
 import { toast } from "react-hot-toast";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 
 
 const ManageFeedback = () => {
-    const id = useLoaderData();
+    const {id} = useParams();
     const feedbackRef = useRef(null);
+    const [axiosSecure] = useAxiosSecure();
+    const navigate = useNavigate();
 
     const handleSubmit = () => {
         const feedback= feedbackRef.current.value;
-        // console.log(feedback);
-        fetch(`http://localhost:5000/allClasses/feedback/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(feedback),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Feedback Sent successfully:', data);
-                toast.success('Successfully feedback sent !')
-            })
+
+        axiosSecure.patch(`/allClasses/feedback/${id}`, {feedback})
+            .then(() => {
+                toast.success('Successfully feedback sent!')
+                navigate('/dashboard/manageClasses', { replace: true });
+            });
+        
     };
 
     return (

@@ -108,7 +108,7 @@ const ManageUsers = () => {
     }
 
     return (
-        <div>
+        <div className="w-full bg-[#2088d851] h-full">
             <Helmet>
                 <title>Manage User | Dance Revolutions</title>
             </Helmet>
