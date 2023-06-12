@@ -6,7 +6,7 @@ const Instructors = () => {
     const [allInstructors, setAllInstructors] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users/instructors')
+        fetch('https://dance-revolutions-server.vercel.app/users/instructors')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

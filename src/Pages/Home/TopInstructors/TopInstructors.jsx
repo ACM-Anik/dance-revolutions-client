@@ -12,7 +12,6 @@ const TopInstructors = ({ topInstructor }) => {
                         {instructor}
                         <div className="badge bg-[#2088d8]">Top</div>
                     </h2>
-
                 </div>
             </div>
         </Zoom>

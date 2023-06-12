@@ -43,7 +43,7 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             console.log(currentUser);
             if(currentUser){
-                axios.post('http://localhost:5000/jwt', {email: currentUser.email})
+                axios.post('https://dance-revolutions-server.vercel.app/jwt', {email: currentUser.email})
                 .then(res => {
                     localStorage.setItem('access-token', res.data.token);
                     setLoading(false);
@@ -51,6 +51,7 @@ const AuthProvider = ({children}) => {
             }
             else{
                 localStorage.removeItem('access-token');
+                setLoading(false);
             }
         })
         return () => {

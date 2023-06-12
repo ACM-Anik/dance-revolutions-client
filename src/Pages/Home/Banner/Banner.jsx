@@ -12,7 +12,7 @@ const Banner = () => {
     const [sliderCategories, setSliderCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/slider-categories')
+        fetch('https://dance-revolutions-server.vercel.app/slider-categories')
             .then(res => res.json())
             .then(data => {
                 setSliderCategories(data);

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://dance-revolutions-server.vercel.app',
 });
 
 const useAxiosSecure = () => {
