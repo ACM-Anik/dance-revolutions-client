@@ -56,7 +56,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     </>
 
     return (
-        <div className={`shadow-black ${theme === 'light' ? 'text-black bg-white' : 'text-white bg-black' } `}>
+        <div className={`shadow-black ${theme === 'light' ? 'text-black bg-base-200' : 'text-white bg-black' } `}>
             <div className="navbar h-20" >
                 <div className="navbar-start">
                     <div className="dropdown">

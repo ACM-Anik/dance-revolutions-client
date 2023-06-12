@@ -21,6 +21,7 @@ import MyClasses from "../../Pages/Dashboard/InstructorDashboard/MyClasses";
 import ManageFeedback from "../../Pages/Dashboard/AdminDashboard/ManageFeedback";
 import Payment from "../../Pages/Dashboard/StudentDashboard/Payment";
 import PaymentHistory from "../../Pages/Dashboard/StudentDashboard/PaymentHistory";
+import InstructorRoute from "../InstructorRoute/InstructorRoute";
 
 const router = createBrowserRouter([
     {
@@ -82,15 +83,15 @@ const router = createBrowserRouter([
                     // Instructor:-
                     {
                         path: 'instructorHome',
-                        element: <InstructorHome></InstructorHome>
+                        element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
                     },
                     {
                         path: 'myAddedClasses',
-                        element: <MyClasses></MyClasses>
+                        element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
                     },
                     {
                         path: 'addAClass',
-                        element: <AddAClass></AddAClass>
+                        element: <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
                     },
                     // Admin Routes:-
                     {
