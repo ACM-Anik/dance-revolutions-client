@@ -22,7 +22,7 @@ const MyEnrolledClasses = () => {
     return (
         <div className="w-full bg-[#2088d851] h-full">
             <Helmet>
-                <title>Enrolled Classes | Dance Revolutions</title>
+                <title>My Enrolled Classes | Dance Revolutions</title>
             </Helmet>
             <div className="py-8">
                 <h1 className="text-3xl font-bold border-l-4 border-[#2088d8] p-2">My Enrolled Classes</h1>

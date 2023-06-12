@@ -25,7 +25,7 @@ const Home = () => {
             <div className="my-32">
                 <Fade bottom>
                     <div className="w-1/2 h-40 mx-auto bg-white shadow-xl shadow-black mb-10 p-4 rounded-lg">
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-center">Rhythm Of Joy<br /> Beyond Imagination !</h1>
+                        <h1 className="text-4xl lg:text-5xl font-extrabold text-center">Rhythm Of Joy<br /> Beyond Imagination !</h1>
                     </div>
                 </Fade>
                 <OverlaySection></OverlaySection>

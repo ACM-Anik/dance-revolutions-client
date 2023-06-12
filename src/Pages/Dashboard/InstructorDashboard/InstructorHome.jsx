@@ -8,7 +8,7 @@ const InstructorHome = () => {
     return (
         <div>
             <Helmet>
-                <title>Dashboard | Dance Revolutions</title>
+                <title>Dashboard Home | Dance Revolutions</title>
             </Helmet>
             <h1 className="text-3xl font-bold">Hello! <span className="text-6xl font-bold text-[#2088d8]">{user?.displayName}</span></h1>
         </div>

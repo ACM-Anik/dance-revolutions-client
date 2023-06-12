@@ -109,7 +109,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                                 </div>
                             </div>
                             :
-                            <Link to="/login"><button className="btn btn-outline text-black rounded-lg border-black hover:border-[#1a1919] hover:bg-[#1a1919]">Login</button></Link>
+                            <Link to="/login"><button className={`btn btn-outline text-black rounded-lg  hover:bg-[#1a1919] ${theme === 'light' ? 'border-black ' : 'border-[#2088d8] text-white hover:border-[#2088d8]'}`}>Login</button></Link>
 
                     }
                 </div>

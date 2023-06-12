@@ -15,7 +15,7 @@ const MySelectedClasses = () => {
     const { refetch, data: selectedClasses = [] } = useQuery({
         enabled: !loading,
         queryKey: ['selectedClasses', user?.email],
-        
+
         queryFn: async () => {
             const res = await axiosSecure(`/selectedClasses?email=${user?.email}`)
             return res.data;
@@ -36,23 +36,25 @@ const MySelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://dance-revolutions-server.vercel.app/selectedClasses/${single._id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
+                axiosSecure.delete(`/selectedClasses/${single._id}`)
+                    .then((response) => {
+                        if (response.data.deletedCount > 0) {
                             refetch();
                             Swal.fire(
-                                'Deleted!',
-                                'Your selected class has been deleted.',
-                                'success'
-                            )
+                                "Deleted!",
+                                "Your selected class has been deleted.",
+                                "success"
+                            );
                         }
                     })
+                    .catch((error) => {
+                        console.error("Error, deleting class:", error);
+                    });
             }
         })
     }
+
+
 
     return (
         <div className="w-full bg-[#2088d851] h-full">
