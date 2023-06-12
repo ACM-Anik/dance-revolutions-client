@@ -36,7 +36,6 @@ const Navbar = ({ theme, toggleTheme }) => {
             }
             >Dashboard</NavLink></li>
         }
-        {/* <li><NavLink to="/dashboard/mySelectedClasses">dashboard</NavLink></li> */}
         <li className="font-bold"><NavLink to="/classes">classes</NavLink></li>
         <li className="font-bold"><NavLink to="/instructors">Instructors</NavLink></li>
     </>

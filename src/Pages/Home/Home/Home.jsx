@@ -4,6 +4,7 @@ import TopClasses from "../TopClasses/TopClasses";
 import TopInstructors from "../TopInstructors/TopInstructors";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import OverlaySection from "../OverlaySection/OverlaySection";
+import { Fade } from "react-reveal";
 
 
 const Home = () => {
@@ -22,9 +23,11 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <div className="my-32">
-                <div className="w-1/2 h-40 mx-auto bg-white shadow-xl shadow-black mb-10 p-4 rounded-lg">
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-center">Rhythm Of Joy<br /> Beyond Imagination !</h1>
-                </div>
+                <Fade bottom>
+                    <div className="w-1/2 h-40 mx-auto bg-white shadow-xl shadow-black mb-10 p-4 rounded-lg">
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-center">Rhythm Of Joy<br /> Beyond Imagination !</h1>
+                    </div>
+                </Fade>
                 <OverlaySection></OverlaySection>
             </div>
             <div className="my-20 mx-auto md:px-6">
