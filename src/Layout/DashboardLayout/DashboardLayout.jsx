@@ -1,17 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUsers, FaCalendarWeek, FaUpload } from 'react-icons/fa';
+import { FaWallet, FaListAlt, FaHome, FaUsers, FaCalendarCheck, FaUpload, FaClipboardList, FaDollyFlatbed } from 'react-icons/fa';
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 
-// import { useContext } from "react";
-// import { AuthContext } from "../../Providers/AuthProvider";
 
 const DashboardLayout = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    // const {user, loading} = useContext(AuthContext);
-    // const isAdmin = null;
-    // const isInstructor = null;
 
     return (
         <div>
@@ -29,7 +24,7 @@ const DashboardLayout = () => {
                             isAdmin ?
                                 <>
                                     <li><NavLink to="adminHome"><FaHome></FaHome>Dashboard Home</NavLink></li>
-                                    <li><NavLink to="manageClasses"><FaCalendarAlt></FaCalendarAlt> Manage Classes</NavLink></li>
+                                    <li><NavLink to="manageClasses"><FaClipboardList></FaClipboardList> Manage Classes</NavLink></li>
                                     <li><NavLink to="manageUsers"><FaUsers></FaUsers> Manage Users</NavLink></li>
                                 </>
                                 :
@@ -37,15 +32,15 @@ const DashboardLayout = () => {
                                     isInstructor ?
 
                                         <>
-                                            <li><NavLink to="/dashboard/instructorHome"><FaUpload></FaUpload>Dashboard Home</NavLink></li>
+                                            <li><NavLink to="/dashboard/instructorHome"><FaHome></FaHome>Dashboard Home</NavLink></li>
                                             <li><NavLink to="/dashboard/addAClass"><FaUpload></FaUpload>Add A Class</NavLink></li>
-                                            <li><NavLink to="/dashboard/myAddedClasses"><FaUpload></FaUpload>My Added Classes</NavLink></li>
+                                            <li><NavLink to="/dashboard/myAddedClasses"><FaListAlt></FaListAlt>My Added Classes</NavLink></li>
                                         </>
                                         :
                                         <>
                                             <li><NavLink to="studentHome"><FaHome></FaHome>Dashboard Home</NavLink></li>
-                                            <li><NavLink to="mySelectedClasses"><FaCalendarWeek></FaCalendarWeek> My Selected Classes</NavLink></li>
-                                            <li><NavLink to="myEnrolledClasses"><FaShoppingCart></FaShoppingCart> My Enrolled Classes</NavLink></li>
+                                            <li><NavLink to="mySelectedClasses"><FaCalendarCheck></FaCalendarCheck> My Selected Classes</NavLink></li>
+                                            <li><NavLink to="myEnrolledClasses"><FaDollyFlatbed></FaDollyFlatbed> My Enrolled Classes</NavLink></li>
                                             <li><NavLink to="paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
                                         </>
 

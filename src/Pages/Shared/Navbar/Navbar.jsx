@@ -1,13 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../../assets/logo.png';
+import logo2 from '../../../assets/logo-2.png';
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useAdmin from "../../../Hooks/useAdmin";
 import useInstructor from "../../../Hooks/useInstructor";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
@@ -26,7 +28,7 @@ const Navbar = () => {
                     "/dashboard/adminHome"
                     :
                     (
-                        isInstructor ? 
+                        isInstructor ?
                             "/dashboard/instructorHome"
                             :
                             "/dashboard/studentHome"
@@ -40,20 +42,23 @@ const Navbar = () => {
     </>
 
     const navIcons = <>
+        <button className="font-bold mx-2" onClick={toggleTheme}>
+            {theme === 'light' ? <FaMoon/> : <FaSun /> }
+        </button>
         <button className="btn btn-ghost btn-circle">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
         </button>
         <button className="btn btn-ghost btn-circle px-4">
             <div className="indicator">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="black"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
                 <span className="badge badge-xs bg-[#2088d8] indicator-item"></span>
             </div>
         </button>
     </>
 
     return (
-        <div className="shadow-black">
-            <div className="navbar bg-[#f4f3f0f1] h-20">
+        <div className={`shadow-black ${theme === 'light' ? 'text-black bg-white' : 'text-white bg-black' } `}>
+            <div className="navbar h-20" >
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost btn-circle lg:hidden">
@@ -65,7 +70,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to="/" className=" normal-case text-xl">
-                        <img style={{ height: '80px' }} src={logo} alt="Website logo" />
+                        <img style={{ height: '80px' }} src={theme === 'light' ? logo : logo2} alt="Website logo" />
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">

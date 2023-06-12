@@ -21,10 +21,13 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className="my-20">
+            <div className="my-32">
+                <div className="w-1/2 h-40 mx-auto bg-white shadow-xl shadow-black mb-10 p-4 rounded-lg">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-center">Rhythm Of Joy<br /> Beyond Imagination !</h1>
+                </div>
                 <OverlaySection></OverlaySection>
             </div>
-            <div className="my-20 mx-auto">
+            <div className="my-20 mx-auto md:px-6">
                 <SectionTitle subHeading="Book Your Seat" heading="OUR TOP CLASSES"></SectionTitle>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
                     {
@@ -32,7 +35,7 @@ const Home = () => {
                     }
                 </div>
             </div>
-            <div className="my-20 mx-auto">
+            <div className="my-20 mx-auto md:px-6">
                 <SectionTitle subHeading="Join Immediately" heading="OUR TOP Instructors"></SectionTitle>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
                     {
@@ -40,7 +43,7 @@ const Home = () => {
                     }
                 </div>
             </div>
-            
+
         </div>
     );
 };
